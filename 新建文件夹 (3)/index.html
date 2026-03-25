@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>文化安全综合学习平台</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Microsoft YaHei", sans-serif;
+}
+body {
+  background: #f4f8ff;
+}
+/* 主导航栏 */
+.nav {
+  background: #165DFF;
+  color: white;
+  display: flex;
+  padding: 15px 20px;
+  gap: 30px;
+}
+.nav button {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 8px;
+}
+.nav button.active {
+  background: rgba(255,255,255,0.2);
+}
+/* 主容器 */
+.container {
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 0 20px;
+}
+/* 板块通用样式 */
+.section {
+  display: none;
+  background: white;
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+.section.active {
+  display: block;
+}
+/* 视频子板块切换 */
+.video-tab {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+.video-tab button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  background: #f0f7ff;
+  color: #165DFF;
+  cursor: pointer;
+  font-size: 16px;
+}
+.video-tab button.active {
+  background: #165DFF;
+  color: white;
+}
+.video-group {
+  display: none;
+}
+.video-group.active {
+  display: block;
+}
+/* 视频列表项 */
+.video-item {
+  margin-bottom: 25px;
+}
+.video-item h3 {
+  color: #165DFF;
+  margin-bottom: 10px;
+  font-size: 17px;
+}
+video {
+  width: 100%;
+  border-radius: 12px;
+  background: #000;
+}
+.music-btn {
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+/* 闯关&竞赛通用样式 */
+.level-bar {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 0;
+  font-size: 16px;
+}
+.question {
+  font-size: 18px;
+  line-height: 1.6;
+  margin: 20px 0;
+}
+.option {
+  background: #f7f8fa;
+  border: 2px solid #eee;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.option.active {
+  border-color: #165DFF;
+  background: #e6f0ff;
+  color: #165DFF;
+}
+.btn {
+  background: #165DFF;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 16px;
+  width: 100%;
+  font-size: 17px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+.msg {
+  text-align: center;
+  margin: 15px 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+.success { color: #009E5F; }
+.error { color: #F53F3F; }
+.finish {
+  text-align: center;
+  padding: 40px 0;
+  font-size: 22px;
+  color: #165DFF;
+}
+</style>
+</head>
+<body>
+
+<!-- 三大主板块导航 -->
+<div class="nav">
+  <button class="nav-btn active" data-target="video">🎬 视频学习</button>
+  <button class="nav-btn" data-target="game">🚪 益智闯关</button>
+  <button class="nav-btn" data-target="competition">🏆 知识竞赛</button>
+</div>
+
+<div class="container">
+  <!-- 1️⃣ 视频学习区（分2个小板块：微课+科普） -->
+  <div class="section active" id="video">
+    <div class="video-tab">
+      <button class="vtoggle active" data-group="weike">📚 微课学习</button>
+      <button class="vtoggle" data-group="kepu">🔬 科普视频</button>
+    </div>
+
+    <!-- 微课学习（共5个） -->
+    <div class="video-group active" id="weike">
+      <div class="video-item">
+        <h3>微课1：网络安全——警惕网络钓鱼（初中生微课）</h3>
+        <video controls muted playsinline>
+          <source src="weike1.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="video-item">
+        <h3>微课2：生态安全——海龟的“塑料袋晚餐”（小学生微课）</h3>
+        <video controls muted playsinline>
+          <source src="weike2.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="video-item">
+        <h3>微课3：文化安全——传统节日的守护</h3>
+        <video controls muted playsinline>
+          <source src="weike3.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="video-item">
+        <h3>微课4：国土安全——身边的防线</h3>
+        <video controls muted playsinline>
+          <source src="weike4.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="video-item">
+        <h3>微课5：端午节的“消失”与“重生”（初中文化安全微课）</h3>
+        <video controls muted playsinline>
+          <source src="weike5.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
+    <!-- 科普视频（共6个） -->
+    <div class="video-group" id="kepu">
+      <div class="video-item">
+        <h3>科普1：红军广场</h3>
+        <video controls muted playsinline>
+          <source src="kepu1.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="video-item">
+        <h3>科普2：红军摇篮——金寨</h3>
+        <video controls muted playsinline>
+          <source src="kepu2.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="video-item">
+        <h3>科普3：小船是如何划出渡江战役的胜利</h3>
+        <video controls muted playsinline>
+          <source src="kepu3.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
+
+    <button class="music-btn" onclick="toggleMusic()" id="musicBtn">🔊 开启背景音乐</button>
+  </div>
+
+  <!-- 2️⃣ 益智类闯关区 -->
+  <div class="section" id="game">
+    <h2 style="color:#165DFF;margin-bottom:15px">🔐 益智闯关答题</h2>
+    <div class="level-bar">
+      <div id="game-level">第1关</div>
+      <div id="game-score">分数：0</div>
+    </div>
+    <div class="question" id="game-question"></div>
+    <div id="game-options"></div>
+    <button class="btn" onclick="submitGame()">提交答案</button>
+    <div class="msg" id="game-msg"></div>
+  </div>
+
+  <!-- 3️⃣ 知识竞赛区 -->
+  <div class="section" id="competition">
+    <h2 style="color:#165DFF;margin-bottom:15px">🏆 知识竞赛</h2>
+    <div class="level-bar">
+      <div id="comp-progress">已完成：0/10</div>
+      <div id="comp-score">竞赛得分：0</div>
+    </div>
+    <div class="question" id="comp-question"></div>
+    <div id="comp-options"></div>
+    <button class="btn" onclick="submitComp()">提交答案</button>
+    <div class="msg" id="comp-msg"></div>
+  </div>
+</div>
+
+<!-- 背景音乐 -->
+<audio id="bgMusic" loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1b8de27d60.mp3" type="audio/mpeg">
+
+<script>
+// 页面加载完成后初始化
+window.onload = function() {
+  // 隐藏所有板块，默认显示视频区
+  document.querySelectorAll('.section').forEach(s => s.style.display = 'none');
+  document.getElementById('video').style.display = 'block';
+
+  // 主导航切换逻辑
+  document.querySelectorAll('.nav-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.section').forEach(s => s.style.display = 'none');
+      document.getElementById(btn.dataset.target).style.display = 'block';
+      document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+
+  // 视频子板块切换（微课/科普）
+  document.querySelectorAll('.vtoggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.vtoggle').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.video-group').forEach(g => g.style.display = 'none');
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.group).style.display = 'block';
+    });
+  });
+};
+
+// 背景音乐控制
+const bgm = document.getElementById('bgMusic');
+let musicon = false;
+function toggleMusic() {
+  if (!musicon) {
+    bgm.play();
+    musicon = true;
+    document.getElementById('musicBtn').innerText = '🔇 关闭音乐';
+  } else {
+    bgm.pause();
+    musicon = false;
+    document.getElementById('musicBtn').innerText = '🔊 开启背景音乐';
+  }
+}
+
+// 益智闯关答题逻辑
+const gameQuestions = [
+  {type:"single", q:"我国全民国家安全教育日是？", o:["3月12日","4月15日","5月1日","10月1日"], a:1},
+  {type:"single", q:"危害国家安全举报电话是？", o:["110","120","12339","12345"], a:2},
+  {type:"single", q:"维护国家安全是公民的？", o:["权利","义务","爱好","选择"], a:1},
+  {type:"multi", q:"属于国家安全的是？（多选）", o:["政治安全","网络安全","生态安全","个人心情"], a:[0,1,2]},
+  {type:"single", q:"国家安全的根本是？", o:["经济安全","政治安全","文化安全","军事安全"], a:1}
+];
+let g_cur = 0, g_score = 0, g_sel = [];
+function loadGame() {
+  g_sel = [];
+  const q = gameQuestions[g_cur];
+  document.getElementById('game-level').innerText = `第${g_cur+1}关`;
+  document.getElementById('game-score').innerText = `分数：${g_score}`;
+  document.getElementById('game-question').innerText = q.q;
+  const optBox = document.getElementById('game-options');
+  optBox.innerHTML = '';
+  q.o.forEach((text, i) => {
+    const div = document.createElement('div');
+    div.className = 'option';
+    div.innerText = (i+1) + '. ' + text;
+    div.onclick = () => {
+      if (q.type === 'single') {
+        g_sel = [i];
+        document.querySelectorAll('#game-options .option').forEach(e => e.classList.remove('active'));
+        div.classList.add('active');
+      } else {
+        if (g_sel.includes(i)) {
+          g_sel = g_sel.filter(x => x !== i);
+          div.classList.remove('active');
+        } else {
+          g_sel.push(i);
+          div.classList.add('active');
+        }
+      }
+    };
+    optBox.appendChild(div);
+  });
+  document.getElementById('game-msg').innerText = '';
+}
+function submitGame() {
+  const q = gameQuestions[g_cur];
+  const msg = document.getElementById('game-msg');
+  if (g_sel.length === 0) {
+    msg.innerText = '请选择答案！';
+    msg.className = 'msg error';
+    return;
+  }
+  let ok = false;
+  if (q.type === 'single') ok = g_sel[0] === q.a;
+  else {
+    g_sel.sort(); q.a.sort();
+    ok = JSON.stringify(g_sel) === JSON.stringify(q.a);
+  }
+  if (ok) {
+    g_score += 10;
+    msg.innerText = '✅ 回答正确！';
+    msg.className = 'msg success';
+    setTimeout(() => {
+      g_cur++;
+      if (g_cur >= gameQuestions.length) {
+        document.querySelector('#game').innerHTML = `
+          <div class="finish">🎉 恭喜通关！<br>闯关得分：${g_score}分<br>
+          <button class="btn" onclick="location.reload()">再来一次</button></div>`;
+      } else loadGame();
+    }, 1000);
+  } else {
+    msg.innerText = '❌ 回答错误，请重试！';
+    msg.className = 'msg error';
+  }
+}
+loadGame();
+
+// 知识竞赛逻辑
+const compQuestions = [
+  {type:"single", q:"总体国家安全观的宗旨是？", o:["政治安全","人民安全","经济安全","军事安全"], a:1},
+  {type:"multi", q:"维护网络安全应做到？（多选）", o:["不造谣","保护个人信息","随意点击链接","举报违法内容"], a:[0,1,3]},
+  {type:"single", q:"下列不属于国家安全的是？", o:["国土安全","经济安全","娱乐安全","科技安全"], a:2},
+  {type:"multi", q:"生态安全包括？（多选）", o:["保护动植物","防治污染","节约资源","破坏环境"], a:[0,1,2]},
+  {type:"single", q:"发现间谍行为应拨打？", o:["110","12339","119","120"], a:1},
+  {type:"single", q:"国家安全的基础是？", o:["政治安全","经济安全","文化安全","社会安全"], a:1},
+  {type:"multi", q:"以下属于网络安全威胁的是？（多选）", o:["病毒","钓鱼网站","数据泄露","正常浏览"], a:[0,1,2]},
+  {type:"single", q:"《国家安全法》施行时间？", o:["2015年","2016年","2017年","2018年"], a:0},
+  {type:"multi", q:"维护国家安全需要？（多选）", o:["人人参与","遵守法律","举报危害","漠不关心"], a:[0,1,2]},
+  {type:"single", q:"国家安全的根本保障是？", o:["军事安全","经济安全","文化安全","社会安全"], a:0}
+];
+let c_cur = 0, c_score = 0, c_sel = [];
+function loadComp() {
+  c_sel = [];
+  const q = compQuestions[c_cur];
+  document.getElementById('comp-progress').innerText = `已完成：${c_cur}/10`;
+  document.getElementById('comp-score').innerText = `竞赛得分：${c_score}`;
+  document.getElementById('comp-question').innerText = q.q;
+  const optBox = document.getElementById('comp-options');
+  optBox.innerHTML = '';
+  q.o.forEach((text, i) => {
+    const div = document.createElement('div');
+    div.className = 'option';
+    div.innerText = (i+1) + '. ' + text;
+    div.onclick = () => {
+      if (q.type === 'single') {
+        c_sel = [i];
+        document.querySelectorAll('#comp-options .option').forEach(e => e.classList.remove('active'));
+        div.classList.add('active');
+      } else {
+        if (c_sel.includes(i)) {
+          c_sel = c_sel.filter(x => x !== i);
+          div.classList.remove('active');
+        } else {
+          c_sel.push(i);
+          div.classList.add('active');
+        }
+      }
+    };
+    optBox.appendChild(div);
+  });
+  document.getElementById('comp-msg').innerText = '';
+}
+function submitComp() {
+  const q = compQuestions[c_cur];
+  const msg = document.getElementById('comp-msg');
+  if (c_sel.length === 0) {
+    msg.innerText = '请选择答案！';
+    msg.className = 'msg error';
+    return;
+  }
+  let ok = false;
+  if (q.type === 'single') ok = c_sel[0] === q.a;
+  else {
+    c_sel.sort(); q.a.sort();
+    ok = JSON.stringify(c_sel) === JSON.stringify(q.a);
+  }
+  if (ok) {
+    c_score += 10;
+    msg.innerText = '✅ 回答正确！';
+    msg.className = 'msg success';
+  } else {
+    msg.innerText = '❌ 回答错误！';
+    msg.className = 'msg error';
+  }
+  setTimeout(() => {
+    c_cur++;
+    if (c_cur >= compQuestions.length) {
+      document.querySelector('#competition').innerHTML = `
+        <div class="finish">🏆 竞赛结束！<br>最终得分：${c_score}分<br>
+        <button class="btn" onclick="location.reload()">重新挑战</button></div>`;
+    } else loadComp();
+  }, 1000);
+}
+loadComp();
+</script>
+</body>
+</html>
